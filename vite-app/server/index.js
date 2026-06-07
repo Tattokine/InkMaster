@@ -33,6 +33,11 @@ app.post('/api/book', (req, res) => {
   res.json({ success: true, message: 'Booking mottatt (demo)' });
 });
 
+// Healthcheck for orchestration / container platforms
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', uptime: process.uptime() });
+});
+
 // Serve Vite build in production
 const distPath = path.join(__dirname, '..', 'dist');
 
@@ -42,7 +47,7 @@ if (process.env.NODE_ENV === 'production') {
 
   // SPA fallback — send index.html for all non-API routes
   app.get('*', (req, res, next) => {
-    if (req.path.startsWith('/api')) return next();
+    if (req.path.startsWith('/api') || req.path === '/health') return next();
     res.sendFile(path.join(distPath, 'index.html'));
   });
 } else {
