@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom utilities / CSS variables (optional) */
+:root {
+  --bg: #0F0F10;
+  --surface: #141416;
+  --text: #FFFFFF;
+  --muted: #BDBDBD;
+  --accent: #8B1E3F;
+  --accent-alt: #D4A76A;
+}
+
+/* Map Tailwind palette to utility-friendly classes */
+.bg-ink { background-color: var(--bg); }
+.text-ink-text { color: var(--text); }
+.bg-ink-surface { background-color: var(--surface); }
+.text-ink-muted { color: var(--muted); }
+.bg-ink-accent { background-color: var(--accent); }
+
